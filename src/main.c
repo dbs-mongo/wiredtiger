@@ -7,7 +7,7 @@
 #include "index.h"
 #include "querying.h"
 
-static const char *home = "~/rat-wt/wt";
+static const char *home = "~/wiredtiger/wt";
 
 int main(int argc, char *argv[]){
     WT_CONNECTION *conn;

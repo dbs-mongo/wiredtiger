@@ -134,7 +134,7 @@ int find(WT_SESSION *session, char *table_name, int id) {
     return ret;
 }
 
-void index_scan(WT_SESSION *session, char *table_name, char *index_name, int id){
+int index_scan(WT_SESSION *session, char *table_name, char *index_name, int id){
     WT_CURSOR *cursor;
     char index_spec[100];
     sprintf(index_spec, "index:%s:%s", table_name, index_name);
@@ -180,7 +180,7 @@ void insert_one(WT_SESSION *session, char *table_name, int id, char *value) {
     cursor->set_key(cursor, &id);
     cursor->set_value(cursor, value);
 
-    ret = cursor->insert(cursor); // Reuse 'ret' variable here
+    ret = cursor->insert(cursor); 
     if (ret != 0) {
         fprintf(stderr, "Failed to insert data: %s\n", wiredtiger_strerror(ret));
     } else {
